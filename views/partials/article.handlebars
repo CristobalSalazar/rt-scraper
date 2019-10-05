@@ -1,0 +1,59 @@
+<div>
+  <a href="{{ article.link }}">
+    <h3>{{ article.title }}</h3>
+  </a>
+  <p>{{ article.body }}</p>
+  <button data-article="{{ article.id }}" class="saveArticle btn btn-secondary">
+    Save Article
+  </button>
+  <button data-toggle="modal" data-target="#comments-{{ article.id }}" class="btn btn-secondary">
+    Comments
+  </button>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="comments-{{ article.id }}"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="commentsLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="commentsLabel">{{ article.title }}</h5>
+      </div>
+      <div class="modal-body w-100">
+        <div class="comments" data-article="{{ article.id }}">
+          {{#each article.comments}}
+          {{>comment comment=this}}
+          {{/each}}
+        </div>
+        <form action="/api/articles/{{ article.id }}" method="POST">
+          <p>Comment</p>
+          <textarea
+            class="form-control commentBody"
+            data-article="{{ article.id }}"
+            rows="4"
+            style="resize: none; min-width: 100%"
+            name="comment"
+          ></textarea>
+          <button
+            type="submit"
+            data-article="{{ article.id }}"
+            class="commentPost btn btn-secondary btn-sm my-3"
+          >
+            POST
+          </button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary rounded" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

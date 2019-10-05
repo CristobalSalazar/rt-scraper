@@ -1,0 +1,13 @@
+<div class="comment" data-id="{{ comment.id }}" data-article="{{ comment.article }}">
+  <div class="w-100 d-flex">
+    <div>{{ comment.body }}</div>
+    <button
+      data-id="{{ comment.id }}"
+      data-article="{{ comment.article }}"
+      class="deleteComment btn btn-outline-danger btn-sm rounded ml-auto"
+    >
+      Delete
+    </button>
+  </div>
+  <hr />
+</div>

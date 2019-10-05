@@ -1,0 +1,23 @@
+<div
+  class="jumbotron bg-primary"
+  style="background: url(https://nbc25news.com/resources/media/0b42de2a-e431-4991-afd4-40d10c0277bb-large16x9_NewspapergenericMGN.png?1516928986796); background-position: center"
+>
+  <div class="display-flex bo">
+    <img
+      class="rounded-circle"
+      width="15%"
+      src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Russia-today-logo.svg"
+      alt="Russia-today-logo"
+    />
+  </div>
+</div>
+<div class="container">
+  <h1 class="my-5">Articles</h1>
+  <ul class="list-group">
+    {{#each articles}}
+    <li class="list-group-item">
+      {{> article article=this}}
+    </li>
+    {{/each}}
+  </ul>
+</div>
